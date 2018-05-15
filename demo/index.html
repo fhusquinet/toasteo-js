@@ -1,0 +1,26 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Toasteo Demo</title>
+
+  <link rel="stylesheet" href="../dist/css/toasteo.css">
+</head>
+
+<body>
+  <p>This is a simple Toasteo demo.</p>
+  <div>
+    <button onclick="window.Toasteo.success('Success toast')">Create a new success toast</button>
+    <button onclick="window.Toasteo.error('Error toast')">Create a new error toast</button>
+    <button onclick="window.Toasteo.warning('Warning toast')">Create a new warning toast</button>
+    <button onclick="window.Toasteo.info('Info toast')">Create a new info toast</button>
+  </div>
+  <div>
+    <button onclick="window.Toasteo.close()">Close all toasts w/ an animation</button>
+    <button onclick="window.Toasteo.remove()">Close all toasts w/out an animation</button>
+  </div>
+  <script src="../dist/js/toasteo.js"></script>
+</body>
+</html>

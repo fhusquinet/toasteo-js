@@ -1,5 +1,5 @@
 {
-  "name": "toasteo.js",
+  "name": "toasteo",
   "homepage": "http://www.deegital.be",
   "description": "Simple Toast plugin that is lightweight and written in vanilla JS.",
   "version": "1.0.0",
@@ -19,7 +19,7 @@
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prepublish": "npm run production"
+    "prepare": "npm run test && npm run production"
   },
   "devDependencies": {
     "babel-jest": "^22.4.3",
@@ -27,5 +27,6 @@
     "jest": "^22.4.3",
     "jsdom-global": "^3.0.2",
     "laravel-mix": "^2.0"
-  }
+  },
+  "dependencies": {}
 }
