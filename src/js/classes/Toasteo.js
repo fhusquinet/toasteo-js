@@ -1,0 +1,163 @@
+import Toast from './Toast';
+
+export default class Toasteo {
+
+    /**
+     * Create a new Toasteo instance.
+     *
+     * @param {object} data
+     */
+    constructor(options) {
+        let defaultClasses = {
+            container: 'toast-container',
+            default: 'toast',
+            closing: 'toast--closing',
+            creating: 'toast--creating',
+            success: 'toast--success',
+            error: 'toast--error',
+            warning: 'toast--warning',
+            info: 'toast--info'
+        };
+        let defaultOptions = {
+            prependTo: document.body.childNodes[0],
+            duration: 4000,
+            animateOnRemoving: true,
+            animationRemovingDuration: 400,
+            animateOnCreation: true,
+            closeOnClick: true,
+            classes: defaultClasses
+        };
+        let classes = {};
+        if ( options && options.classes ) {
+            classes = Object.assign({}, defaultOptions.classes, options.classes);
+        }
+        this.options = Object.assign({}, defaultOptions, options);
+        this.options.classes = Object.assign({}, defaultClasses, classes);
+
+        this.toasts = [];
+    }
+
+    create(message, type, options) {
+        this.container = this.createContainer();
+
+        let toast = new Toast(message, this.getToastClass(type));
+        let index = this.toasts.length + 1;
+
+        let className = toast.element.className;
+        if (this.options.animateOnCreation) {
+            toast.element.className = toast.element.className + ' ' + this.options.classes.creating;
+        }
+        this.container.prepend(toast.element);
+
+        this.handleCreationAnimation(toast, className);
+        this.handleClick(toast);
+        this.handleDuration(toast);
+
+        this.toasts.push(toast);
+
+        return toast;
+    }
+
+    getToastClass(type) {
+        let className = this.options.classes.default;
+        if ( type ) {
+            className += ' ' + this.options.classes[type];
+        }
+        return className;
+    }
+
+    handleCreationAnimation(toast, className) {
+        if (this.options.animateOnCreation) {
+            setTimeout(() => {
+                toast.element.className = className;
+            }, 100);
+        }
+    }
+
+    handleClick(toast) {
+        if (this.options.closeOnClick) {
+            toast.element.addEventListener('click', function() {
+                this.closeOrRemoveToast(toast);
+            }.bind(this, toast));
+        }
+    }
+
+    handleDuration(toast) {
+        if (this.options.duration > 0) {
+            toast.timeout = setTimeout(() => {
+                this.closeOrRemoveToast(toast);
+            }, this.options.duration);
+        }
+    }
+
+    closeOrRemoveToast(toast) {
+        if (this.options.animateOnRemoving) {
+            return this.closeToast(toast);
+        }
+        
+        this.removeToast(toast);
+    }
+
+    closeToast(toast) {
+        clearTimeout(toast.timeout);
+        toast.close(this.options.classes.closing, this.options.animationRemovingDuration);
+        this.toasts.splice(this.findToastIndex(toast), 1);
+    }
+
+    removeToast(toast) {
+        clearTimeout(toast.timeout);
+        toast.remove();
+        this.toasts.splice(this.findToastIndex(toast), 1);
+    }
+
+    findToastIndex(toast) {
+        for (let i = this.toasts.length - 1; i >= 0; i--) {
+            if ( toast.instance == this.toasts[i].instance ) {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    createContainer() {
+        let container = document.querySelector('.' + this.options.classes.container);
+
+        if (container) {
+            return container;
+        }
+
+        container = document.createElement('div');
+        container.className = this.options.classes.container;
+        document.body.insertBefore(container, this.options.prependTo);
+        return container;
+    }
+
+    success(message, options) {
+        return this.create(message, 'success', options);
+    }
+
+    error(message, options) {
+        return this.create(message, 'error', options);
+    }
+
+    warning(message, options) {
+        return this.create(message, 'warning', options);
+    }
+
+    info(message, options) {
+        return this.create(message, 'info', options);
+    }
+
+    close() {
+        for (let i = this.toasts.length - 1; i >= 0; i--) {
+            this.closeToast(this.toasts[i]);
+        }
+    }
+
+    remove() {
+        for (let i = this.toasts.length - 1; i >= 0; i--) {
+            this.removeToast(this.toasts[i]);
+        }
+    }
+
+}
