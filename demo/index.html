@@ -1,26 +1,313 @@
 <!doctype html>
 <html class="no-js" lang="">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Toasteo Demo</title>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Toasteo Demo</title>
 
-  <link rel="stylesheet" href="../dist/css/toasteo.css">
-</head>
+      <link rel="stylesheet" href="../dist/css/toasteo.css">
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+      <style type="text/css">
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+          .spacing {
+            margin-top: 100px;
+          }
+      </style>
+    </head>
 
-<body>
-  <p>This is a simple Toasteo demo.</p>
-  <div>
-    <button onclick="window.Toasteo.success('Success toast')">Create a new success toast</button>
-    <button onclick="window.Toasteo.error('Error toast')">Create a new error toast</button>
-    <button onclick="window.Toasteo.warning('Warning toast')">Create a new warning toast</button>
-    <button onclick="window.Toasteo.info('Info toast')">Create a new info toast</button>
-  </div>
-  <div>
-    <button onclick="window.Toasteo.close()">Close all toasts w/ an animation</button>
-    <button onclick="window.Toasteo.remove()">Close all toasts w/out an animation</button>
-  </div>
-  <script src="../dist/js/toasteo.js"></script>
-</body>
+    <body>
+        <div class="mt-8 mb-8">
+            <div class="container mx-auto main-container px-8 py-4">
+                <div class="flex mb-4">
+                    <div class="w-1/3">
+                        <div class="fixed">
+                            <div>
+                                <p class="text-grey uppercase tracking-wide font-bold text-sm lg:text-xs">
+                                    Introduction
+                                </p>
+                                <ul class="mt-2">
+                                    <li>
+                                        <a href="#presentation" class="text-sm hover:underline text-grey-dark">
+                                            What's Toasteo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#why" class="text-sm hover:underline text-grey-dark">
+                                            Why Toasteo
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-8">
+                                <p class="text-grey uppercase tracking-wide font-bold text-sm lg:text-xs">
+                                    Installation
+                                </p>
+                                <ul class="mt-2">
+                                    <li>
+                                        <a href="#installing" class="text-sm hover:underline text-grey-dark">
+                                            Installing the package
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#customize" class="text-sm hover:underline text-grey-dark">
+                                            Customizing your experience
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-8">
+                                <p class="text-grey uppercase tracking-wide font-bold text-sm lg:text-xs">
+                                    Demo
+                                </p>
+                                <ul class="mt-2">
+                                    <li>
+                                        <a href="#how" class="text-sm hover:underline text-grey-dark">
+                                            How does it work
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#success-toast" class="text-sm hover:underline text-grey-dark">
+                                            The success toast
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#error-toast" class="text-sm hover:underline text-grey-dark">
+                                            The error toast
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#warning-toast" class="text-sm hover:underline text-grey-dark">
+                                            The warning toast
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#info-toast" class="text-sm hover:underline text-grey-dark">
+                                            The info toast
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-2/3">
+                        <div id="presentation">
+                            <h1 class="text-2xl text-grey-dark">Toasteo</h1>
+                            <h2 class="mt-2 font-light text-grey">A simple Toast package that is <span class="font-bold">lightweight (5kb~)</span> with <span class="font-bold">zero dependencies</span> written in <span class="font-bold">vanilla JS</span></h2>
+                        </div>
+                        <div id="why" class="spacing">
+                            <h3 class="text-grey-dark text-xl">
+                                Why another Toast package...?
+                            </h3>
+                            <div>
+                                <p class="mt-4 font-thin text-grey-dark">
+                                    There isn't many lightweight toasts package with zero dependencies, not even jQuery or an animation library.
+                                </p>
+                                <p class="mt-2 font-thin text-grey-dark">
+                                    While I do like those package which support touch screens, fully animated when going on and out of the screen, and pretty easy to use they are quite heavy (usually around 35kb~) and sometimes hard to style because of all the different CSS classes used which is a deal breaker such a simple functionality.
+                                </p>
+                                <p class="mt-2 font-thin text-grey-dark">
+                                    The other lightweight packages on the other hand lack a few methods which are quite useful when building real application (removing existing toasts, remove on click...), that's why <span class="font-bold text-grey-darker">Toasteo</span> was created!
+                                </p>
+                            </div>
+                        </div>
+                        <div id="installation" class="spacing">
+                            <h3 class="text-grey-dark text-xl">
+                                Installing Toasteo
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                Simply run the following line in your terminal to pull up the package from NPM
+                            </p>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    npm install --save-dev toasteo
+                                </p>
+                            </div>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                Once that's done, you can simply import it in your main file and set it to whatever floats your boat
+                            </p>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    import Toasteo from './classes/Toasteo';<br/>
+                                    window.Toasteo = new Toasteo();
+                                </p>
+                            </div>
+                        </div>
+                        <div id="customization" class="spacing">
+                            <h3 class="text-grey-dark text-xl">
+                                Customizing Toasteo
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                I added a default CSS file which you can use just like that, it's probably enough for most projects but sometimes you want that extra bit of customization.
+                            </p>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                You can either choose to keep the default classes used in the package and simply add your own CSS or change everything by providing a custom set of classes when initializing Toasteo.
+                            </p>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                Here's the default options, feel free to change them however fits your need!
+                            </p>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-loose">
+                                <p class="text-sm text-grey-dark">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-grey">// The DOM element used to insert the container.</span><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prependTo: document.body.childNodes[0],<br/><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-grey">// The duration after which the toast will be removed.</span><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration: 4000, <span class="text-grey"></span><br/><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-grey">// Animate the toast when removing it by adding a CSS class.</span><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animateOnRemoving: true,<br/><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-grey">// The duration of the removing animation.</span><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animationRemovingDuration: 400, <br/><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-grey">// The duration of the creation animation.</span><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animateOnCreation: true,<br/><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-grey">// The toast should be removed when clicked.</span><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closeOnClick: true, <br/><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-grey">// The default classes used by the package.</span><br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classes: {<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;container: 'toast-container',<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default: 'toast',<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closing: 'toast--closing',<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;creating: 'toast--creating',<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success: 'toast--success',<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error: 'toast--error',<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;warning: 'toast--warning',<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info: 'toast--info'<br/>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                                </p>
+                            </div>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                Just to provide a small example, let's say you do not want to remove toasts on click and you want the container to have the "my-custom-toast-container" class.
+                            </p>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    window.Toasteo = import Toasteo({<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;closeOnClick: false,<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;classes: {<br/>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;container: "my-custom-toast-container"<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                                    });
+                                </p>
+                            </div>
+                        </div>
+                        <div id="demo" class="spacing">
+                            <h3 class="text-grey-dark text-xl">
+                                Let's try it out, shall we? :)
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                There is four toasts ready to be used, a success toast, an error toast, a warning toast and an info toast. They all use the same syntax, the only difference is the style applied.
+                            </p>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    window.Toasteo.success('Your message');<br/>
+                                    window.Toasteo.error('Your message');<br/>
+                                    window.Toasteo.warning('Your message');<br/>
+                                    window.Toasteo.info('Your message');
+                                </p>
+                            </div>
+                        </div>
+                        <div id="success-toast" class="spacing">
+                            <h3 class="text-grey-dark text-lg">
+                                The success toast
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                When you want to provide some feedback to the user about a request being succesful.
+                            </p>
+                            <button class="mt-4 py-3 px-4 rounded bg-green text-white hover:bg-green-dark" onclick="window.Toasteo.success('Hey welcome back buddy, we missed you!')">
+                                Toggle me
+                            </button>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.success('Hey welcome back buddy, we missed you!');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                        </div>
+                        <div id="error-toast" class="spacing">
+                            <h3 class="text-grey-dark text-lg">
+                                The error toast
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                When the user did not fill a form correctly, when an error happened or anything "dangerous".
+                            </p>
+                            <button class="mt-4 py-3 px-4 rounded bg-red text-white hover:bg-red-dark" onclick="window.Toasteo.error('You missed some fields there buddy.')">
+                                Toggle me
+                            </button>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.error('You missed some fields there buddy.');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                        </div>
+                        <div id="warning-toast" class="spacing">
+                            <h3 class="text-grey-dark text-lg">
+                                The warning toast
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                This might be useful when the user tries to do something important, like deleting sensitive data.
+                            </p>
+                            <button class="mt-4 py-3 px-4 rounded bg-orange text-white hover:bg-orange-dark" onclick="window.Toasteo.warning('Be careful, deleting a post is not reversible! Are you sure about it?')">
+                                Toggle me
+                            </button>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.warning('Be careful, deleting a post is not reversible! Are you sure about it?');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                        </div>
+                        <div id="info-toast" class="spacing">
+                            <h3 class="text-grey-dark text-lg">
+                                The info toast
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                Just want to provide the user with some informations which isn't directly related to an action? Or simply describe what he should do next to catch his attention better? Use this toast!
+                            </p>
+                            <button class="mt-4 py-3 px-4 rounded bg-blue text-white hover:bg-blue-dark" onclick="window.Toasteo.info('Great, now use the e-mail we just sent you to confirm your account :)')">
+                                Toggle me
+                            </button>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.info('Great, now use the e-mail we just sent you to confirm your account :)');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                        </div>
+                        <div id="in-depth" class="spacing">
+                            <h3 class="text-grey-dark text-xl">
+                                Let's look a bit deeper inside Toasteo
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                Each toast has it's own class, making it easy to close or remove an existing toast without affecting the others. The Toast API follows the same logic as the Toasteo API, the only exception is that you need to provide the class and duration used to close a Toast yourself.
+                            </p>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    let toast1 = window.Toasteo.success('My first toast');<br/>
+                                    let toast2 = window.Toasteo.info('My second toast');<br/>
+                                    let toast3 = window.Toasteo.warning('My third toast');<br/><br/>
+
+                                    toast2.remove(); <span class="text-grey">// Removing the second toast directly, no animation used.</span><br/><br/>
+                                    toast3.close('my-closing-class', 400); <span class="text-grey">// Closing the third toast with an animation using the "my-closing-class" class which last 400ms.</span><br/><br/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../dist/js/toasteo.js"></script>
+        <script type="text/javascript">
+            window.Toasteo = new Toasteo();
+        </script>
+    </body>
 </html>
