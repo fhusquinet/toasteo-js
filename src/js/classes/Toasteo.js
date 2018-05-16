@@ -27,12 +27,28 @@ export default class Toasteo {
             closeOnClick: true,
             classes: defaultClasses
         };
-        let classes = {};
+
+        let classes = defaultClasses;
         if ( options && options.classes ) {
-            classes = Object.assign({}, defaultOptions.classes, options.classes);
+            classes = options.classes;
         }
-        this.options = Object.assign({}, defaultOptions, options);
-        this.options.classes = Object.assign({}, defaultClasses, classes);
+
+        for ( var property in defaultClasses ) {
+            if ( property in classes ) { continue; }
+            classes[property] = defaultClasses[property];
+        }
+
+        if ( ! options ) {
+            options = defaultOptions;
+        } else {
+            for ( var property in defaultOptions ) {
+                if ( property in options ) { continue; }
+                options[property] = defaultOptions[property];
+            }
+        }
+
+        this.options = options;
+        this.options.classes = classes;
 
         this.toasts = [];
     }

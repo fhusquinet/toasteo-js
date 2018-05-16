@@ -32,14 +32,23 @@ window.Toasteo = new Toasteo(options};
 ```
 
 | Option | Description | Default |
-|:-------------:|:-------------|:-----:|
+|:-------------|:-------------|:-----|
 | prependTo     | The dom element that the toast notification will be prepended to. | `document.body.childNodes[0]` |
 |  duration  | The duration after which the toast will be removed.      |   `4000` (ms) |
 | animateOnRemoving | Animate the toast when removing it by adding a CSS class. | `true` |
 | animationRemovingDuration | The duration of the remove animation in milliseconds, after which the toast will be removed from the DOM | `400` |
 | animateOnCreation | Animate the toast when creating it by adding a CSS class. | `true` |
 | closeOnClick | The toast should be removed when clicked. | `true` |
-| classes | The default classes used by the package. | `{container: 'toast-container', default: 'toast', closing: 'toast--closing', creating: 'toast--creating', 'success': 'toast--success', 'error': 'toast--error', 'warning': 'toast--warning', 'info': 'toast--info'}` |
+| classes | The default classes used by the package. | `{
+container: 'toast-container',
+default: 'toast',
+closing: 'toast--closing',
+creating: 'toast--creating',
+'success': 'toast--success',
+'error': 'toast--error',
+'warning': 'toast--warning',
+'info': 'toast--info'
+}` |
 
 ## Demo & Documentation
 You can see Toasteo in action on the [demo page](https://fhusquinet.github.io/toasteo-js/) as well as a better documentation.
