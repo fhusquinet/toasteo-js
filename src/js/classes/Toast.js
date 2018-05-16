@@ -6,15 +6,16 @@ export default class Toast {
      * @param {string} message
      * @param {string} type
      */
-    constructor(message, className = '') {
+    constructor(message, type = null, className = '') {
         this.instance = Math.random().toString(36);
         this.element = null;
         this.timeout = null;
 
-        this.create(message, className);
+        this.create(message, type, className);
     }
 
-    create(message, className = '') {
+    create(message, type, className = '') {
+        this.type = type;
         this.element = document.createElement('div');
         this.element.innerHTML = message;
         if ( className ) {

@@ -339,12 +339,48 @@
                                 </p>
                             </div>
                         </div>
+                        <div id="closing-toasts-with-type" class="spacing">
+                            <h3 class="text-grey-dark text-lg">
+                                Closing existing toasts with the given type
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                Since each toast has it's own type set, you can also choose to only close or remove toasts having a specific type by passing it as a parameter.
+                            </p>
+                            <button class="mt-4 py-3 px-4 rounded bg-red text-white hover:bg-red-dark" onclick="createDemoToasts()">
+                                Create a few toasts
+                            </button>
+                            <button class="mt-4 py-3 px-4 rounded bg-green text-white hover:bg-green-dark" onclick="closeErrorToastsAndCreateSuccess()">
+                                Close error toasts and create a new success one
+                            </button>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.success('Welcome back mate!');</span>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    <span class="pl-4 block">window.Toasteo.warning('You might need to slow down.');</span>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.close('error');</span>
+                                    <span class="pl-4 block">window.Toasteo.success('Your form was submitted!');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                        </div>
                         <div id="removing-toasts" class="spacing">
                             <h3 class="text-grey-dark text-lg">
-                                Removing existing toasts
+                                Removing existing error toasts
                             </h3>
                             <p class="mt-4 font-thin text-grey-dark">
                                 This behave just like the closing logic, expect no animation is provided.
+                            </p>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                You can also provide a type as the parameter to only remove toasts having the type given.
                             </p>
                             <button class="mt-4 py-3 px-4 rounded bg-red text-white hover:bg-red-dark" onclick="createDemoErrorToasts()">
                                 Create a few error toasts
@@ -399,8 +435,20 @@
                 window.Toasteo.error('The form was not filled correctly.');
                 window.Toasteo.error('The form was not filled correctly.');
             }
+            var createDemoToasts = function () {
+                window.Toasteo.success('Welcome back mate!');
+                window.Toasteo.error('The form was not filled correctly.');
+                window.Toasteo.error('The form was not filled correctly.');
+                window.Toasteo.warning('You might want to slow down there...');
+                window.Toasteo.error('The form was not filled correctly.');
+                window.Toasteo.info('You have been localised in Seoul, South Korea');
+            }
             var closeToastsAndCreateSuccess = function () {
                 window.Toasteo.close();
+                window.Toasteo.success('Your form was submitted!');
+            }
+            var closeErrorToastsAndCreateSuccess = function () {
+                window.Toasteo.close('error');
                 window.Toasteo.success('Your form was submitted!');
             }
             var removeToastsAndCreateSuccess = function () {

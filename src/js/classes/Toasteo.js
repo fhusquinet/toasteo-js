@@ -56,7 +56,7 @@ export default class Toasteo {
     create(message, type, options) {
         this.container = this.createContainer();
 
-        let toast = new Toast(message, this.getToastClass(type));
+        let toast = new Toast(message, type, this.getToastClass(type));
         let index = this.toasts.length + 1;
 
         let className = toast.element.className;
@@ -164,15 +164,27 @@ export default class Toasteo {
         return this.create(message, 'info', options);
     }
 
-    close() {
+    close(type = null) {
         for (let i = this.toasts.length - 1; i >= 0; i--) {
-            this.closeToast(this.toasts[i]);
+            if ( type !== null && this.toasts[i].type == type ) {
+                this.closeToast(this.toasts[i]);
+                continue;
+            }
+            if ( type == null ) {
+                this.closeToast(this.toasts[i]);
+            }
         }
     }
 
-    remove() {
+    remove(type = null) {
         for (let i = this.toasts.length - 1; i >= 0; i--) {
-            this.removeToast(this.toasts[i]);
+            if ( type !== null && this.toasts[i].type == type ) {
+                this.removeToast(this.toasts[i]);
+                continue;
+            }
+            if ( type == null ) {
+                this.removeToast(this.toasts[i]);
+            }
         }
     }
 

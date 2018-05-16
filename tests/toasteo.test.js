@@ -257,3 +257,128 @@ test('it can disable the remove on click option', () => {
     expect(toasteo.toasts.length).toBe(1);
     expect(document.querySelectorAll('.toast.toast--success').length).toBe(1);
 });
+
+test('it can close all toasts having a success type', () => { 
+    jest.useFakeTimers();
+    let toasteo = new Toasteo({animationRemovingDuration: 100, animateOnCreation: false});
+    for ( let i = 0; i < 10; i++ ) {
+        toasteo.success('My toast #' + i)
+    }
+    toasteo.error('My error toast');
+    toasteo.warning('My warning toast');
+    toasteo.info('My info toast');
+    
+    expect(toasteo.toasts.length).toBe(13);
+    
+    toasteo.close('success');
+    
+    expect(document.querySelectorAll('.toast.toast--success.toast--closing').length).toBe(10);
+    setTimeout(() => {
+        expect(toasteo.toasts.length).toBe(3);
+        expect(document.querySelector('.toast.toast--success')).toBeNull();
+        expect(document.querySelectorAll('.toast.toast--error').length).toBe(1);
+        expect(document.querySelectorAll('.toast.toast--warning').length).toBe(1);
+        expect(document.querySelectorAll('.toast.toast--info').length).toBe(1);
+    }, 400);
+    jest.runAllTimers();
+});
+
+test('it can close all toasts having a error type', () => { 
+    jest.useFakeTimers();
+    let toasteo = new Toasteo({animationRemovingDuration: 100, animateOnCreation: false});
+    for ( let i = 0; i < 10; i++ ) {
+        toasteo.error('My toast #' + i)
+    }
+    toasteo.success('My success toast');
+    toasteo.warning('My warning toast');
+    toasteo.info('My info toast');
+    
+    expect(toasteo.toasts.length).toBe(13);
+    
+    toasteo.close('error');
+    
+    expect(document.querySelectorAll('.toast.toast--error.toast--closing').length).toBe(10);
+    setTimeout(() => {
+        expect(toasteo.toasts.length).toBe(3);
+        expect(document.querySelector('.toast.toast--error')).toBeNull();
+        expect(document.querySelectorAll('.toast.toast--success').length).toBe(1);
+        expect(document.querySelectorAll('.toast.toast--warning').length).toBe(1);
+        expect(document.querySelectorAll('.toast.toast--info').length).toBe(1);
+    }, 400);
+    jest.runAllTimers();
+});
+
+test('it can close all toasts having a warning type', () => { 
+    jest.useFakeTimers();
+    let toasteo = new Toasteo({animationRemovingDuration: 100, animateOnCreation: false});
+    for ( let i = 0; i < 10; i++ ) {
+        toasteo.warning('My toast #' + i)
+    }
+    toasteo.success('My success toast');
+    toasteo.error('My error toast');
+    toasteo.info('My info toast');
+    
+    expect(toasteo.toasts.length).toBe(13);
+    
+    toasteo.close('warning');
+    
+    expect(document.querySelectorAll('.toast.toast--warning.toast--closing').length).toBe(10);
+    setTimeout(() => {
+        expect(toasteo.toasts.length).toBe(3);
+        expect(document.querySelector('.toast.toast--warning')).toBeNull();
+        expect(document.querySelectorAll('.toast.toast--success').length).toBe(1);
+        expect(document.querySelectorAll('.toast.toast--error').length).toBe(1);
+        expect(document.querySelectorAll('.toast.toast--info').length).toBe(1);
+    }, 400);
+    jest.runAllTimers();
+});
+
+test('it can close all toasts having a info type', () => { 
+    jest.useFakeTimers();
+    let toasteo = new Toasteo({animationRemovingDuration: 100, animateOnCreation: false});
+    for ( let i = 0; i < 10; i++ ) {
+        toasteo.info('My toast #' + i)
+    }
+    toasteo.success('My success toast');
+    toasteo.error('My error toast');
+    toasteo.warning('My warning toast');
+    
+    expect(toasteo.toasts.length).toBe(13);
+    
+    toasteo.close('info');
+    
+    expect(document.querySelectorAll('.toast.toast--info.toast--closing').length).toBe(10);
+    setTimeout(() => {
+        expect(toasteo.toasts.length).toBe(3);
+        expect(document.querySelector('.toast.toast--info')).toBeNull();
+        expect(document.querySelectorAll('.toast.toast--success').length).toBe(1);
+        expect(document.querySelectorAll('.toast.toast--warning').length).toBe(1);
+        expect(document.querySelectorAll('.toast.toast--error').length).toBe(1);
+    }, 400);
+    jest.runAllTimers();
+});
+
+test('it can remove all toasts having a given type', () => { 
+    jest.useFakeTimers();
+    let toasteo = new Toasteo({animationRemovingDuration: 100, animateOnCreation: false});
+    for ( let i = 0; i < 10; i++ ) {
+        toasteo.warning('My toast #' + i)
+    }
+    toasteo.error('My error toast');
+    toasteo.success('My sucess toast');
+    toasteo.info('My info toast');
+    
+    expect(toasteo.toasts.length).toBe(13);
+    
+    toasteo.remove('success');
+    expect(toasteo.toasts.length).toBe(12);
+
+    toasteo.remove('warning');
+    expect(toasteo.toasts.length).toBe(2);
+
+    toasteo.remove('info');
+    expect(toasteo.toasts.length).toBe(1);
+
+    toasteo.remove('error');
+    expect(toasteo.toasts.length).toBe(0);
+});

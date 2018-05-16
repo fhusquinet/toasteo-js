@@ -7,21 +7,21 @@ test('a toast can be created', () => {
 });
 
 test('a toast can be created with a class', () => {
-    let toast = new Toast('My message', 'my-custom-toast-class');
+    let toast = new Toast('My message', null, 'my-custom-toast-class');
     expect(toast.element).not.toBeNull();
     expect(toast.element.innerHTML).toBe('My message');
     expect(toast.element.className).toBe('my-custom-toast-class');
 });
 
 test('a toast can be insered into the DOM', () => {
-    let toast = new Toast('My message', 'inserted-toast');
+    let toast = new Toast('My message', null, 'inserted-toast');
     expect(document.querySelector('.inserted-toast')).toBeNull();
     toast.insert(document.body.childNodes[0]);
     expect(document.querySelector('.inserted-toast')).not.toBeNull();
 });
 
 test('a toast can be removed', () => {
-    let toast = new Toast('My message', 'removed-toast');
+    let toast = new Toast('My message', null, 'removed-toast');
     toast.insert(document.body.childNodes[0]);
     expect(document.querySelector('.removed-toast')).not.toBeNull();
     toast.remove();
@@ -30,7 +30,7 @@ test('a toast can be removed', () => {
 });
 
 test('a toast can be removed after a given duration using a class', () => {
-    let toast = new Toast('My message', 'removed-toast');
+    let toast = new Toast('My message', null, 'removed-toast');
     toast.insert(document.body.childNodes[0]);
     expect(document.querySelector('.removed-toast')).not.toBeNull();
     toast.close('removed-toast--closing', 400);
