@@ -11,5 +11,6 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('demo/js/src.js', 'demo/js/app.js')
-   .styles('src/css/toasteo.css', 'dist/css/toasteo.css');
+mix.js('docs/js/src.js', 'docs/js/app.js')
+   .styles('src/css/toasteo.css', 'dist/css/toasteo.css')
+   .styles('src/css/toasteo.css', 'docs/css/toasteo.css');
