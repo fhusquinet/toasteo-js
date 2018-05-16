@@ -39,16 +39,19 @@ window.Toasteo = new Toasteo(options};
 | animationRemovingDuration | The duration of the remove animation in milliseconds, after which the toast will be removed from the DOM | `400` |
 | animateOnCreation | Animate the toast when creating it by adding a CSS class. | `true` |
 | closeOnClick | The toast should be removed when clicked. | `true` |
-| classes | The default classes used by the package. | `{
-container: 'toast-container',
-default: 'toast',
-closing: 'toast--closing',
-creating: 'toast--creating',
-'success': 'toast--success',
-'error': 'toast--error',
-'warning': 'toast--warning',
-'info': 'toast--info'
-}` |
+| classes | The default classes used by the package. Please see below for the explaination and default values. |  |
+
+
+| Class | Description | Default |
+|:-------------|:-------------|:-----|
+| container | The class set to the toasts container | `toast-container` |
+| default | The class set to every toast | `toast` |
+| closing | The class set to a toast when using the close method | `toast--closing` |
+| creating | The class set to a toast when creating it | `toast--creating` |
+| success | The class set to a toast with the success type | `toast--success` |
+| error | The class set to a toast with the error type | `toast--error` |
+| warning | The class set to a toast with the warning type | `toast--warning` |
+| info | The class set to a toast with the info type | `toast--info` |
 
 ## Demo & Documentation
 You can see Toasteo in action on the [demo page](https://fhusquinet.github.io/toasteo-js/) as well as a better documentation.
