@@ -13,6 +13,11 @@ import Toasteo from "toasteo";
 window.Toasteo = new Toasteo({});
 ```
 
+#### In your SCSS file
+```
+import "~toasteo/dist/css/toasteo.css";
+```
+
 ## Basic usage
 There is four toasts ready to be used, a success toast, an error toast, a warning toast and an info toast. They all use the same syntax, the only difference is the style applied.
 
