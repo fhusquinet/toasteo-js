@@ -6,7 +6,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       <title>Toasteo Demo</title>
 
-      <link rel="stylesheet" href="../dist/css/toasteo.css">
+      <link rel="stylesheet" href="../src/css/toasteo.css">
       <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
       <style type="text/css">
         ul {
@@ -90,6 +90,28 @@
                                     <li>
                                         <a href="#info-toast" class="text-sm hover:underline text-grey-dark">
                                             The info toast
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#closing-toasts" class="text-sm hover:underline text-grey-dark">
+                                            Closing toasts
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#removing-toasts" class="text-sm hover:underline text-grey-dark">
+                                            Removing toasts
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-8">
+                                <p class="text-grey uppercase tracking-wide font-bold text-sm lg:text-xs">
+                                    In depth look
+                                </p>
+                                <ul class="mt-2">
+                                    <li>
+                                        <a href="#in-depth" class="text-sm hover:underline text-grey-dark">
+                                            Into the Toast class
                                         </a>
                                     </li>
                                 </ul>
@@ -202,12 +224,15 @@
                             <p class="mt-4 font-thin text-grey-dark">
                                 There is four toasts ready to be used, a success toast, an error toast, a warning toast and an info toast. They all use the same syntax, the only difference is the style applied.
                             </p>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                A Toast instance will be returned when using these methods, you can learn a bit more about that <a href="#in-depth" class="hover:underline text-grey-darker font-normal">here</a>
+                            </p>
                             <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
                                 <p class="text-sm text-grey-dark">
-                                    window.Toasteo.success('Your message');<br/>
-                                    window.Toasteo.error('Your message');<br/>
-                                    window.Toasteo.warning('Your message');<br/>
-                                    window.Toasteo.info('Your message');
+                                    let success_toast = window.Toasteo.success('Your message');<br/>
+                                    let error_toast = window.Toasteo.error('Your message');<br/>
+                                    let warning_toast = window.Toasteo.warning('Your message');<br/>
+                                    let info_toast = window.Toasteo.info('Your message');
                                 </p>
                             </div>
                         </div>
@@ -283,6 +308,68 @@
                                 </p>
                             </div>
                         </div>
+                        <div id="closing-toasts" class="spacing">
+                            <h3 class="text-grey-dark text-lg">
+                                Closing existing toasts
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                You might need to close all existing toasts. A good UX case for that would be a form with error toasts on validation then a success toast when the user finally fills it correctly. The user might see two or three error toasts before finally seeing the success toast, which will make the page bloated up with non-relevant toasts — who cares if the form was not filled correctly before, now that is it let's celebrate it!
+                            </p>
+                            <button class="mt-4 py-3 px-4 rounded bg-red text-white hover:bg-red-dark" onclick="createDemoErrorToasts()">
+                                Create a few error toasts
+                            </button>
+                            <button class="mt-4 py-3 px-4 rounded bg-green text-white hover:bg-green-dark" onclick="closeToastsAndCreateSuccess()">
+                                Close toasts and create a new success one
+                            </button>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.close();</span>
+                                    <span class="pl-4 block">window.Toasteo.success('Your form was submitted!');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                        </div>
+                        <div id="removing-toasts" class="spacing">
+                            <h3 class="text-grey-dark text-lg">
+                                Removing existing toasts
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                This behave just like the closing logic, expect no animation is provided.
+                            </p>
+                            <button class="mt-4 py-3 px-4 rounded bg-red text-white hover:bg-red-dark" onclick="createDemoErrorToasts()">
+                                Create a few error toasts
+                            </button>
+                            <button class="mt-4 py-3 px-4 rounded bg-green text-white hover:bg-green-dark" onclick="removeToastsAndCreateSuccess()">
+                                Remove toasts and create a new success one
+                            </button>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    <span class="pl-4 block">window.Toasteo.error('The form was not filled correctly.');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script&gt;<br/>
+                                    <span class="pl-4 block">window.Toasteo.remove();</span>
+                                    <span class="pl-4 block">window.Toasteo.success('Your form was submitted!');</span>
+                                    &lt;/script&gt;
+                                </p>
+                            </div>
+                        </div>
                         <div id="in-depth" class="spacing">
                             <h3 class="text-grey-dark text-xl">
                                 Let's look a bit deeper inside Toasteo
@@ -305,9 +392,21 @@
                 </div>
             </div>
         </div>
-        <script src="../dist/js/toasteo.js"></script>
+        <script src="js/app.js"></script>
         <script type="text/javascript">
-            window.Toasteo = new Toasteo();
+            var createDemoErrorToasts = function () {
+                window.Toasteo.error('The form was not filled correctly.');
+                window.Toasteo.error('The form was not filled correctly.');
+                window.Toasteo.error('The form was not filled correctly.');
+            }
+            var closeToastsAndCreateSuccess = function () {
+                window.Toasteo.close();
+                window.Toasteo.success('Your form was submitted!');
+            }
+            var removeToastsAndCreateSuccess = function () {
+                window.Toasteo.remove();
+                window.Toasteo.success('Your form was submitted!');
+            }
         </script>
     </body>
 </html>
