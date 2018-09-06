@@ -1,14 +1,20 @@
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 import pkg from './package.json';
 
 export default [
 	// browser-friendly UMD build
 	{
-		input: 'src/js/umd.js',
+		input: 'src/js/index.js',
 		output: {
-			name: 'toasteo',
+			name: 'Toasteo',
 			file: pkg.browser,
 			format: 'umd'
-		}
+		},
+		plugins: [
+			resolve(), // so Rollup can find `ms`
+			commonjs() // so Rollup can convert `ms` to an ES module
+		]
 	},
 
 	// CommonJS (for Node) and ES module (for bundlers) build.
