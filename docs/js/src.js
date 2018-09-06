@@ -1,2 +1,2 @@
-import Toasteo from "./../../src/js/classes/Toasteo";
+import Toasteo from "./../../dist/js/toasteo";
 window.Toasteo = new Toasteo();

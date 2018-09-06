@@ -18,6 +18,15 @@ window.Toasteo = new Toasteo({});
 import "~toasteo/dist/css/toasteo.css";
 ```
 
+#### Using the UMD
+A UMD version is available in case you are not using webpack or babel.
+You can import it using the following script:
+```
+<script src="/node_modules/toasteo/dist/js/toasteo.umd.js"></script>
+<script src="/node_modules/toasteo/dist/css/toasteo.css"></script>
+```
+The window.Toasteo class will be available for you. Please note that you cannot customize your experience using the options below with the UMD version.
+
 ## Basic usage
 There is four toasts ready to be used, a success toast, an error toast, a warning toast and an info toast. They all use the same syntax, the only difference is the style applied.
 

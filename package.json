@@ -2,31 +2,35 @@
   "name": "toasteo",
   "homepage": "http://www.deegital.be",
   "description": "Simple Toast plugin that is lightweight and written in vanilla JS.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
-  "main": "dist/js/toasteo.js",
+  "main": "dist/js/toasteo.cjs.js",
+  "module": "dist/js/toasteo.js",
+  "browser": "dist/js/toasteo.umd.js",
   "author": "Florian Husquinet <florian.husquinet@deegital.be>",
   "repository": {
     "type": "git",
     "url": "https://github.com/fhusquinet/Toasteo.js.git"
   },
-  "scripts": {
-    "test": "jest",
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch-poll": "npm run watch -- --watch-poll",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prepare": "npm run test && npm run production"
+  "dependencies": {
+    "ms": "^2.0.0"
   },
   "devDependencies": {
-    "babel-jest": "^22.4.3",
-    "cross-env": "^5.1.4",
     "jest": "^22.4.3",
-    "jsdom-global": "^3.0.2",
+    "rollup": "^0.65.0",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "cross-env": "^5.1.4",
     "laravel-mix": "^2.0"
   },
-  "dependencies": {}
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "prepare": "npm run test && npm run build",
+    "docs": "npm run prepare && cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "files": [
+    "dist"
+  ]
 }

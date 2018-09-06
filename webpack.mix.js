@@ -10,7 +10,6 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-mix.js('docs/js/src.js', 'docs/js/app.js')
-   .styles('src/css/toasteo.css', 'dist/css/toasteo.css')
-   .styles('src/css/toasteo.css', 'docs/css/toasteo.css');
+mix.copy('dist/js/toasteo.umd.js', 'docs/js/umd.js')
+   .js('docs/js/src.js', 'docs/js/app.js')
+   .styles('dist/css/toasteo.css', 'docs/css/toasteo.css');

@@ -160,6 +160,22 @@
                                     window.Toasteo = new Toasteo();
                                 </p>
                             </div>
+                            <h3 class="mt-16 text-grey-dark text-xl">
+                                UMD Version
+                            </h3>
+                            <p class="mt-4 font-thin text-grey-dark">
+                                If you prefer, you can also use the UMD version using a simple script tag. The window.Toasteo instance will then be available for you.<br/>
+                                Please note that you cannot customize your experience using the options below with the UMD version.
+                            </p>
+                            <div class="mt-4 p-4 bg-blue-lightest rounded leading-normal">
+                                <p class="text-sm text-grey-dark">
+                                    &lt;script src="/node_modules/toasteo/dist/js/toasteo.umd.js"&gt;&lt;/script&gt;
+                                    &lt;script src="/node_modules/toasteo/dist/css/toasteo.css"&gt;&lt;/script&gt;
+                                </p>
+                            </div>
+                            <h3 class="mt-16 text-grey-dark text-xl">
+                                Styling
+                            </h3>
                             <p class="mt-4 font-thin text-grey-dark">
                                 You can also pull the CSS file from the node_modules directy using the following syntax, or simply copy it from the dist/css folder.
                             </p>
@@ -437,6 +453,7 @@
             </div>
         </div>
         <script src="js/app.js"></script>
+        <!-- <script src="js/umd.js"></script> -->
         <script type="text/javascript">
             var createDemoErrorToasts = function () {
                 window.Toasteo.error('The form was not filled correctly.');
