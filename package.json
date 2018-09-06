@@ -2,10 +2,10 @@
   "name": "toasteo",
   "homepage": "http://www.deegital.be",
   "description": "Simple Toast plugin that is lightweight and written in vanilla JS.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
-  "main": "dist/js/toasteo.cjs.js",
-  "module": "dist/js/toasteo.js",
+  "main": "dist/js/toasteo.js",
+  "cjs": "dist/js/toasteo.cjs.js",
   "browser": "dist/js/toasteo.umd.js",
   "author": "Florian Husquinet <florian.husquinet@deegital.be>",
   "repository": {
