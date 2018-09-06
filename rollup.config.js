@@ -1,5 +1,3 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
 import pkg from './package.json';
 
 export default [
@@ -22,8 +20,8 @@ export default [
 	{
 		input: 'src/js/index.js',
 		output: [
-			{ file: pkg.cjs, format: 'cjs' },
-			{ file: pkg.main, format: 'es' }
+			{ file: pkg.main, format: 'cjs' },
+			{ file: pkg.module, format: 'es' }
 		]
 	}
 ];
