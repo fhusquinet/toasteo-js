@@ -1,3 +1,16 @@
 {
-    "presets": ["env"]
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "modules": false
+            }
+        ]
+    ],
+    "plugins": [
+        "babel-plugin-rewire-exports"
+    ],
+    "exclude": [
+        "node_modules/**"
+    ]
 }
