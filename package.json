@@ -2,7 +2,7 @@
   "name": "toasteo",
   "homepage": "http://www.deegital.be",
   "description": "Simple Toast plugin that is lightweight and written in vanilla JS.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "main": "dist/js/toasteo.cjs.js",
   "module": "dist/js/toasteo.esm.js",
